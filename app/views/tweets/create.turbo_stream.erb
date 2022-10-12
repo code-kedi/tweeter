@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "tweets" do %>
+<%# by prepending we add to the list from the top %>
+  <%= render "tweet", tweet: @tweet %>
+<% end %>
