@@ -2,7 +2,7 @@
   <%= render "form" %>
 </div>
 
-<%= turbo_frame_tag "tweets" do %>
+<%= turbo_frame_tag "tweets", class: "divide-y" do %>
   <%= render @tweets %>
   <%# this means we will look for the _tweet.html.erb file %>
   <%# by doing so, we don't have to do something like:
