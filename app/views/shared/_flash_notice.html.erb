@@ -1,5 +1,8 @@
-<% flash.each do |type, message| %>
-  <div class="<%= flash_classes(type) %>">
-    <%= message %>
-  </div>
+ <%# unless: the block of code executes once the given condition is false %>
+<% unless flash[:tweet_errors] %>
+  <% flash.each do |type, message| %>
+    <div class="<%= flash_classes(type) %>">
+      <%= message %>
+    </div>
+  <% end %>
 <% end %>
