@@ -10,4 +10,7 @@ class User < ApplicationRecord
 
   # even though we added the uniqueness on the database layer, we want to add it here as well
   validates_uniqueness_of :username
+
+  # we need Active Storage to do that
+  has_one_attached :profile_image
 end
