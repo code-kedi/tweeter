@@ -1,4 +1,6 @@
-<div class="px-6 py-3">
+<div class="px-6 py-3" id="<%= dom_id(tweet) %>">
+<%# dom_id is a helper, it will spit out naming conventions for us %>
+<%# it looks like this: e.g. tweet_13 (it's the id and the class name lowercased) %>
   <div class="flex space-x-3 items-start pb-3">
     <%= profile_image(tweet.user) %>
   </div>
