@@ -11,3 +11,11 @@
   <%# end %>
   <%# we can do it because of the conventions %>
 <% end %>
+
+<%= turbo_frame_tag Tweet.new do %>
+<%# we use a new instance of tweet %>
+  <% if @tweets.none? %>
+    <%= render "empty" %>
+    <%# if there are no tweets at all, render the partial empty %>
+  <% end %>
+<% end %>

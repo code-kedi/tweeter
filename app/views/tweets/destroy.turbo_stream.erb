@@ -1,0 +1,8 @@
+<%= turbo_stream.remove @tweet %>
+<%# this gives us a real-time way to hook into the feed and render it correctly %>
+
+<% unless Tweet.all.exists? %>
+  <%= turbo_stream.update Tweet.new do %>
+    <%= render "tweets/empty" %>
+  <% end %>
+<% end %>
