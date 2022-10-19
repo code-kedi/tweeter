@@ -23,6 +23,10 @@ class TweetsController < ApplicationController
     end
   end
 
+  def show
+    @tweet = Tweet.find(params[:id])
+  end
+
   def destroy
     @tweet = current_user.tweets.find(params[:id])
     @tweet.destroy
