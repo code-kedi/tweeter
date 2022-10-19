@@ -39,4 +39,18 @@
   <div class="py-2 border-y px-4 justify-center flex">
     <%= render "tweets/controls", tweet: @tweet %>
   </div>
+
+  <% if user_signed_in? %>
+    <%= turbo_frame_tag "#{dom_id(@tweet)}_comment_form" do %>
+      <%= render "comments/form", tweet: @tweet %>
+    <% end %>
+  <% else %>
+    <p class="mt-6 text-center text-lg"><%= link_to "Sign in", new_user_session_path, class: "text-sky-500 hover:text-sky-600 font-medium" %></p>
+  <% end %>
+
+  <%= turbo_frame_tag "#{dom_id(@tweet)}_comments" do %>
+    <% @comments.each do |comment| %>
+      <%= render "comments/comment", comment: comment %>
+    <% end %>
+  <% end %>
 </div>
