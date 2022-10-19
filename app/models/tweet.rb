@@ -3,6 +3,7 @@ class Tweet < ApplicationRecord
   belongs_to :tweet, optional: true
   # optional: true => if a tweet is created, it doesn't need a tweet_id
   # id != tweet_id !
+  has_many :comments
 
   validates :body, length: { maximum: 240 }, allow_blank: false, unless: :tweet_id
   # if there is a tweet_id, the validation for the body are not applied
