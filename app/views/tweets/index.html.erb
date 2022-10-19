@@ -2,19 +2,17 @@
   <%= render "form" %>
 </div>
 
-<%= turbo_frame_tag "tweets", class: "divide-y" do %>
-  <%= render @tweets %>
-  <%# this means we will look for the _tweet.html.erb file %>
-  <%# by doing so, we don't have to do something like:
-  @tweets.each do |tweet|
-  render "tweet" tweet: tweet %>
-  <%# end %>
-  <%# we can do it because of the conventions %>
+<%= turbo_frame_tag "tweets" do %>
+  <% @tweets.each do |tweet| %>
+    <%= render partial: "tweets/#{tweet.tweet_type}", locals: {tweet: tweet} %>
+    <%# this means we will look for partial X depending on the tweet type %>
+  <% end %>
 <% end %>
 
 <%= turbo_frame_tag Tweet.new do %>
 <%# we use a new instance of tweet %>
-  <% if @tweets.none? %>
+  <% if Tweet.all.none? %>
+  <%# instead, we could write: @tweets.none? %>
     <%= render "empty" %>
     <%# if there are no tweets at all, render the partial empty %>
   <% end %>
