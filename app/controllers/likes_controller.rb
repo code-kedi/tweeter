@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   before_action :set_likeable
 
   def create
-    if @likeable.likes >= 1 && @likeable.liked_by?(current_user)
+    if @likeable.likes.count >= 1 && @likeable.liked_by?(current_user)
       # if it's liked you want to be able to unlike it
       @like = Like.find_by(likeable_id: @likeable.id, user: current_user)
       @like.destroy
