@@ -1,4 +1,6 @@
 class Tweet < ApplicationRecord
+  # we replaced "has_many :likes, as: :likeable" with the line below
+  include Likeable
   belongs_to :user
   belongs_to :tweet, optional: true
   # optional: true => if a tweet is created, it doesn't need a tweet_id

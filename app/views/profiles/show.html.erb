@@ -15,7 +15,10 @@
       <%= link_to "Edit profile", edit_user_registration_path, class: "inline-flex justify-center items-center px-5 py-2 rounded-full border ring-4 focus:ring-sky-50 ring-transparent hover:ring-sky-50 hover:border-gray-300" if current_user %>
     </div>
   </div>
-  <ul class="list-none divide-y -mx-6 mt-10">
-    <%= render collection: @profile.tweets, partial: "tweets/tweet" %>
-  </ul>
+  <div class="mt-10 -mx-6">
+    <% @profile.tweets.each do |tweet| %>
+      <%= render partial: "tweets/#{tweet.tweet_type}", locals: {tweet: tweet} %>
+      <%# this means we will look for partial X depending on the tweet type %>
+    <% end %>
+  </div>
 </div>

@@ -13,6 +13,9 @@
 
       <ul class="-ml-3 flex space-x-14 items-start justify-start list-none">
         <li>
+          <%= content_tag :div, class: "#{dom_id(comment)}_likes" do %>
+            <%= render "likes/like", likeable: comment %>
+          <% end %>
         </li>
         <% if user_signed_in? && current_user == comment.user  %>
           <li>
