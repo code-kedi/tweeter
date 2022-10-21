@@ -33,6 +33,7 @@
       <span class="font-semibold text-gray-800"><%= Tweet.where(tweet_id: @tweet).size %></span> Retweets
     </li>
     <li>
+    <span class="font-semibold text-gray-800"><%= @tweet.likes.size %></span> Likes
     </li>
   </ul>
 
